@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <div class="login-shell">
+    <div class="login-card">
+      <span class="wordmark">PNG ONE</span>
+      <span class="eyebrow">Quản trị</span>
+      <% if (error) { %>
+        <div class="form-error"><%= error %></div>
+      <% } %>
+      <form action="/admin/login" method="POST">
+        <div class="form-row">
+          <label class="field-label">Email</label>
+          <input type="email" name="email" required autofocus />
+        </div>
+        <div class="form-row">
+          <label class="field-label">Mật khẩu</label>
+          <input type="password" name="password" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

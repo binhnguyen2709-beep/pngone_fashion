@@ -1,0 +1,19 @@
+<header class="site-header">
+  <nav class="nav">
+    <a href="/" class="wordmark">PNG ONE</a>
+    <ul class="nav-links">
+      <li><a href="/" class="<%= currentPath === '/' ? 'active' : '' %>"><%= t('nav.home') %></a></li>
+      <li><a href="/collection" class="<%= currentPath.startsWith('/collection') ? 'active' : '' %>"><%= t('nav.collection') %></a></li>
+      <li><a href="/#philosophy"><%= t('nav.about') %></a></li>
+      <li><a href="/#contact"><%= t('nav.contact') %></a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <a href="?lang=vi" class="<%= locale === 'vi' ? 'active' : '' %>"><%= t('lang.vi') %></a>
+        <a href="?lang=en" class="<%= locale === 'en' ? 'active' : '' %>"><%= t('lang.en') %></a>
+      </div>
+      <a href="/cart" class="cart-link"><%= t('nav.cart') %><span class="cart-badge"><%= cartCount %></span></a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+</header>

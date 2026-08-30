@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %> · PNG ONE Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <a href="/admin" class="wordmark">PNG ONE</a>
+      <ul class="admin-nav">
+        <li><a href="/admin" class="<%= currentPath === '/admin' ? 'active' : '' %>">Bảng điều khiển</a></li>
+        <li><a href="/admin/products" class="<%= currentPath.startsWith('/admin/products') ? 'active' : '' %>">Sản phẩm</a></li>
+        <li><a href="/admin/orders" class="<%= currentPath.startsWith('/admin/orders') ? 'active' : '' %>">Đơn hàng</a></li>
+        <li><a href="/" target="_blank" rel="noopener">Xem website ↗</a></li>
+      </ul>
+      <form action="/admin/logout" method="POST">
+        <button type="submit" class="btn-logout">Đăng xuất</button>
+      </form>
+    </aside>
+    <main class="admin-main">
+      <%- body %>
+    </main>
+  </div>
+</body>
+</html>

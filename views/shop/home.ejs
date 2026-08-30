@@ -1,0 +1,64 @@
+<section class="hero">
+  <span class="hero-bleed-word" aria-hidden="true">PNG ONE</span>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow eyebrow--light"><%= t('home.heroEyebrow') %></span>
+      <h1 class="hero-title"><%= t('home.heroTitle') %></h1>
+      <p class="hero-subtitle"><%= t('home.heroSubtitle') %></p>
+      <a href="/collection" class="btn btn-primary"><%= t('home.heroCta') %></a>
+    </div>
+    <div class="hero-visual">
+      <span class="hero-visual-label">SS26 · N°1</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow"><%= t('home.featuredEyebrow') %></span>
+        <h2 class="section-title"><%= t('home.featuredTitle') %></h2>
+      </div>
+      <a href="/collection" class="btn btn-outline"><%= t('home.viewAll') %></a>
+    </div>
+    <div class="product-grid">
+      <% featured.forEach(function(product) { %>
+        <a class="product-card" href="/product/<%= product.slug %>" data-reveal>
+          <div class="swatch swatch-<%= product.swatchTone %>">
+            <span class="swatch-tag"><%= field(product.name) %></span>
+          </div>
+          <div class="product-meta">
+            <span class="name"><%= field(product.name) %></span>
+            <span class="price"><%= product.price.toLocaleString('vi-VN') %> ₫</span>
+          </div>
+        </a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="philosophy" style="background: var(--bone);">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow"><%= t('home.philosophyEyebrow') %></span>
+        <h2 class="section-title"><%= t('home.philosophyTitle') %></h2>
+      </div>
+    </div>
+    <div class="philosophy-grid">
+      <div class="philosophy-item" data-reveal>
+        <h3><%= t('home.philosophy1Title') %></h3>
+        <p><%= t('home.philosophy1Body') %></p>
+      </div>
+      <div class="philosophy-item" data-reveal>
+        <h3><%= t('home.philosophy2Title') %></h3>
+        <p><%= t('home.philosophy2Body') %></p>
+      </div>
+      <div class="philosophy-item" data-reveal>
+        <h3><%= t('home.philosophy3Title') %></h3>
+        <p><%= t('home.philosophy3Body') %></p>
+      </div>
+    </div>
+  </div>
+</section>

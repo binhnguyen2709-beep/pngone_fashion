@@ -1,0 +1,82 @@
+<div class="admin-topbar">
+  <h1><%= product ? 'Sửa sản phẩm' : 'Thêm sản phẩm' %></h1>
+</div>
+
+<% if (error) { %>
+  <div class="form-error"><%= error %></div>
+<% } %>
+
+<form action="/admin/products" method="POST" class="admin-panel">
+  <% if (product) { %>
+    <input type="hidden" name="id" value="<%= product._id %>" />
+  <% } %>
+
+  <div class="admin-form-grid">
+    <div class="form-row">
+      <label class="field-label">Tên (Tiếng Việt) *</label>
+      <input type="text" name="nameVi" value="<%= product ? product.name.vi : '' %>" required />
+    </div>
+    <div class="form-row">
+      <label class="field-label">Tên (Tiếng Anh)</label>
+      <input type="text" name="nameEn" value="<%= product ? product.name.en : '' %>" />
+    </div>
+
+    <div class="form-row full">
+      <label class="field-label">Đường dẫn (slug)</label>
+      <input type="text" name="slug" value="<%= product ? product.slug : '' %>" placeholder="ao-khoac-len-oxblood" />
+    </div>
+
+    <div class="form-row">
+      <label class="field-label">Mô tả (Tiếng Việt)</label>
+      <textarea name="descriptionVi"><%= product ? product.description.vi : '' %></textarea>
+    </div>
+    <div class="form-row">
+      <label class="field-label">Mô tả (Tiếng Anh)</label>
+      <textarea name="descriptionEn"><%= product ? product.description.en : '' %></textarea>
+    </div>
+
+    <div class="form-row">
+      <label class="field-label">Danh mục *</label>
+      <select name="category" required>
+        <% categories.forEach(function(c) { %>
+          <option value="<%= c._id %>" <%= product && String(product.category) === String(c._id) ? 'selected' : '' %>><%= c.name.vi %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="form-row">
+      <label class="field-label">Giá (VND) *</label>
+      <input type="number" name="price" value="<%= product ? product.price : '' %>" required min="0" />
+    </div>
+
+    <div class="form-row">
+      <label class="field-label">Kích cỡ (phân cách bởi dấu phẩy)</label>
+      <input type="text" name="sizes" value="<%= product ? product.sizes.join(', ') : 'S, M, L' %>" />
+    </div>
+    <div class="form-row">
+      <label class="field-label">Màu sắc (phân cách bởi dấu phẩy)</label>
+      <input type="text" name="colors" value="<%= product ? product.colors.join(', ') : '' %>" />
+    </div>
+
+    <div class="form-row">
+      <label class="field-label">Tồn kho</label>
+      <input type="number" name="stock" value="<%= product ? product.stock : 20 %>" min="0" />
+    </div>
+    <div class="form-row">
+      <label class="field-label">Tông màu swatch (ảnh tạm)</label>
+      <select name="swatchTone">
+        <% ['ink','bone','oxblood','brass','forest'].forEach(function(tone) { %>
+          <option value="<%= tone %>" <%= product && product.swatchTone === tone ? 'selected' : '' %>><%= tone %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label class="field-label">
+        <input type="checkbox" name="featured" <%= product && product.featured ? 'checked' : '' %> style="width:auto; margin-right:0.4rem;" />
+        Hiển thị ở trang chủ (nổi bật)
+      </label>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" style="margin-top: var(--space-3);">Lưu sản phẩm</button>
+</form>

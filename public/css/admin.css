@@ -1,0 +1,256 @@
+/* Admin dashboard — reuses tokens from style.css, adds utilitarian layout */
+
+body.admin-body {
+  background: var(--bone);
+}
+
+.admin-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  background: var(--ink);
+  color: var(--bone);
+  padding: var(--space-3) var(--space-2);
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-sidebar .wordmark {
+  color: var(--bone);
+  font-size: 1.2rem;
+  margin-bottom: var(--space-4);
+  padding: 0 var(--space-1);
+}
+
+.admin-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+}
+
+.admin-nav a {
+  display: block;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  color: rgba(232, 226, 209, 0.75);
+}
+
+.admin-nav a:hover,
+.admin-nav a.active {
+  background: rgba(232, 226, 209, 0.08);
+  color: var(--bone);
+}
+
+.admin-sidebar form {
+  margin-top: var(--space-2);
+}
+
+.admin-sidebar .btn-logout {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--line-on-dark);
+  color: rgba(232, 226, 209, 0.75);
+  padding: 0.65rem 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin-sidebar .btn-logout:hover {
+  border-color: var(--oxblood);
+  color: var(--paper);
+}
+
+.admin-main {
+  padding: var(--space-3) var(--space-4);
+}
+
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+
+.admin-topbar h1 {
+  font-size: 1.6rem;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.stat-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: var(--space-2);
+}
+
+.stat-card .label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(21, 20, 15, 0.55);
+}
+
+.stat-card .value {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  margin-top: 0.3rem;
+}
+
+.admin-panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: var(--space-3);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admin-table th {
+  text-align: left;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(21, 20, 15, 0.5);
+  padding: 0.6rem 0.6rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.admin-table td {
+  padding: 0.7rem 0.6rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.admin-table .swatch-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(21, 20, 15, 0.08);
+}
+
+.pill-paid {
+  background: rgba(47, 59, 42, 0.15);
+  color: var(--forest);
+}
+
+.pill-pending {
+  background: rgba(156, 122, 70, 0.2);
+  color: var(--brass);
+}
+
+.pill-failed {
+  background: rgba(92, 26, 30, 0.12);
+  color: var(--oxblood);
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.table-actions a,
+.table-actions button {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--line);
+  background: transparent;
+  cursor: pointer;
+}
+
+.table-actions a:hover,
+.table-actions button:hover {
+  border-color: var(--oxblood);
+  color: var(--oxblood);
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2) var(--space-3);
+  max-width: 760px;
+}
+
+.admin-form-grid .full {
+  grid-column: 1 / -1;
+}
+
+.status-select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.login-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+}
+
+.login-card {
+  background: var(--paper);
+  padding: var(--space-4);
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-card .wordmark {
+  display: block;
+  text-align: center;
+  margin-bottom: var(--space-1);
+}
+
+.login-card .eyebrow {
+  display: block;
+  text-align: center;
+  margin-bottom: var(--space-3);
+}
+
+@media (max-width: 900px) {
+  .admin-shell {
+    grid-template-columns: 1fr;
+  }
+  .admin-sidebar {
+    display: none;
+  }
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

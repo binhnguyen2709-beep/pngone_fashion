@@ -1,0 +1,41 @@
+<div class="admin-topbar">
+  <h1>Sản phẩm</h1>
+  <a href="/admin/products/new" class="btn btn-primary">+ Thêm sản phẩm</a>
+</div>
+
+<div class="admin-panel">
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Tên</th>
+        <th>Danh mục</th>
+        <th>Giá</th>
+        <th>Kho</th>
+        <th>Nổi bật</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (!products.length) { %>
+        <tr><td colspan="7">Chưa có sản phẩm nào.</td></tr>
+      <% } %>
+      <% products.forEach(function(p) { %>
+        <tr>
+          <td><span class="swatch-dot swatch-<%= p.swatchTone %>"></span></td>
+          <td><%= field(p.name) %></td>
+          <td><%= p.category ? field(p.category.name) : '—' %></td>
+          <td><%= p.price.toLocaleString('vi-VN') %> ₫</td>
+          <td><%= p.stock %></td>
+          <td><%= p.featured ? 'Có' : '—' %></td>
+          <td class="table-actions">
+            <a href="/admin/products/<%= p._id %>/edit">Sửa</a>
+            <form action="/admin/products/<%= p._id %>/delete" method="POST" onsubmit="return confirm('Xoá sản phẩm này?');">
+              <button type="submit">Xoá</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

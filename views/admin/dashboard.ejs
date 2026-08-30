@@ -1,0 +1,51 @@
+<div class="admin-topbar">
+  <h1>Bảng điều khiển</h1>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="label">Sản phẩm</div>
+    <div class="value"><%= productCount %></div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Tổng đơn hàng</div>
+    <div class="value"><%= orderCount %></div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Đơn mới</div>
+    <div class="value"><%= newOrders %></div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Doanh thu đã thanh toán</div>
+    <div class="value" style="font-size: 1.3rem;"><%= revenue.toLocaleString('vi-VN') %> ₫</div>
+  </div>
+</div>
+
+<div class="admin-panel">
+  <h2 style="font-size: 1.1rem; margin-bottom: var(--space-2);">Đơn hàng gần đây</h2>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Mã đơn</th>
+        <th>Khách hàng</th>
+        <th>Tổng tiền</th>
+        <th>Thanh toán</th>
+        <th>Trạng thái</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (!recentOrders.length) { %>
+        <tr><td colspan="5">Chưa có đơn hàng nào.</td></tr>
+      <% } %>
+      <% recentOrders.forEach(function(o) { %>
+        <tr>
+          <td><%= o.orderCode %></td>
+          <td><%= o.customer.fullName %></td>
+          <td><%= o.subtotal.toLocaleString('vi-VN') %> ₫</td>
+          <td><span class="pill pill-<%= o.paymentStatus %>"><%= o.paymentStatus %></span></td>
+          <td><%= o.status %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

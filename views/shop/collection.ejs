@@ -1,0 +1,35 @@
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow"><%= t('nav.collection') %></span>
+        <h1 class="section-title"><%= t('collection.title') %></h1>
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <a href="/collection" class="filter-pill <%= !activeSlug ? 'active' : '' %>"><%= t('collection.filterAll') %></a>
+      <% categories.forEach(function(cat) { %>
+        <a href="/collection/<%= cat.slug %>" class="filter-pill <%= activeSlug === cat.slug ? 'active' : '' %>"><%= field(cat.name) %></a>
+      <% }) %>
+    </div>
+
+    <% if (products.length === 0) { %>
+      <div class="empty-state"><%= t('collection.empty') %></div>
+    <% } else { %>
+      <div class="product-grid">
+        <% products.forEach(function(product) { %>
+          <a class="product-card" href="/product/<%= product.slug %>">
+            <div class="swatch swatch-<%= product.swatchTone %>">
+              <span class="swatch-tag"><%= field(product.name) %></span>
+            </div>
+            <div class="product-meta">
+              <span class="name"><%= field(product.name) %></span>
+              <span class="price"><%= product.price.toLocaleString('vi-VN') %> ₫</span>
+            </div>
+          </a>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</section>

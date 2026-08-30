@@ -1,0 +1,27 @@
+{
+  "name": "png-one-fashion",
+  "version": "1.0.0",
+  "description": "PNG ONE FASHION — luxury ready-to-wear e-commerce website",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "seed": "node seed/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.5.0"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

@@ -1,0 +1,55 @@
+<section class="section">
+  <div class="wrap">
+    <div class="product-detail">
+      <div class="swatch swatch-<%= product.swatchTone %>">
+        <span class="swatch-tag"><%= field(product.name) %></span>
+      </div>
+      <div>
+        <span class="eyebrow"><%= field(product.category.name) %></span>
+        <h1 class="product-title"><%= field(product.name) %></h1>
+        <div class="product-detail-price"><%= product.price.toLocaleString('vi-VN') %> ₫</div>
+        <p class="product-description"><%= field(product.description) %></p>
+
+        <form action="/cart/add" method="POST">
+          <input type="hidden" name="productId" value="<%= product._id %>" />
+          <% if (product.sizes.length) { %>
+            <span class="field-label"><%= t('product.size') %></span>
+            <div class="size-row">
+              <% product.sizes.forEach(function(size, i) { %>
+                <label class="size-option">
+                  <input type="radio" name="size" value="<%= size %>" <%= i === 0 ? 'checked' : '' %> />
+                  <%= size %>
+                </label>
+              <% }) %>
+            </div>
+          <% } %>
+          <span class="field-label"><%= t('cart.qty') %></span>
+          <input type="number" name="qty" value="1" min="1" style="width:5rem; margin-bottom: 1.5rem;" />
+          <br />
+          <button type="submit" class="btn btn-primary"><%= t('product.addToCart') %></button>
+        </form>
+      </div>
+    </div>
+
+    <% if (related.length) { %>
+      <div class="section-head" style="margin-top: var(--space-6);">
+        <div>
+          <span class="eyebrow"><%= t('product.related') %></span>
+        </div>
+      </div>
+      <div class="product-grid">
+        <% related.forEach(function(r) { %>
+          <a class="product-card" href="/product/<%= r.slug %>">
+            <div class="swatch swatch-<%= r.swatchTone %>">
+              <span class="swatch-tag"><%= field(r.name) %></span>
+            </div>
+            <div class="product-meta">
+              <span class="name"><%= field(r.name) %></span>
+              <span class="price"><%= r.price.toLocaleString('vi-VN') %> ₫</span>
+            </div>
+          </a>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</section>

@@ -1,0 +1,63 @@
+<section class="section">
+  <div class="wrap">
+    <h1 class="section-title"><%= t('cart.title') %></h1>
+
+    <% if (!cart.length) { %>
+      <div class="empty-state">
+        <p><%= t('cart.empty') %></p>
+        <a href="/collection" class="btn btn-outline" style="margin-top: 1rem;"><%= t('cart.continue') %></a>
+      </div>
+    <% } else { %>
+      <table class="cart-table" style="margin-top: var(--space-3);">
+        <thead>
+          <tr>
+            <th></th>
+            <th><%= t('cart.qty') %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cart.forEach(function(item) { %>
+            <tr>
+              <td>
+                <div class="cart-item">
+                  <div class="swatch swatch-<%= item.swatchTone %>"></div>
+                  <div>
+                    <div class="name"><%= item.name %></div>
+                    <div style="font-size: 0.82rem; color: rgba(21,20,15,0.6);"><%= t('product.size') %>: <%= item.size %></div>
+                    <div style="font-size: 0.9rem; margin-top: 0.2rem;"><%= item.price.toLocaleString('vi-VN') %> ₫</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <form action="/cart/update" method="POST" style="display:flex; gap:0.5rem; align-items:center;">
+                  <input type="hidden" name="productId" value="<%= item.productId %>" />
+                  <input type="hidden" name="size" value="<%= item.size %>" />
+                  <input class="cart-qty-input" type="number" name="qty" min="1" value="<%= item.qty %>" />
+                  <button type="submit" class="btn btn-outline" style="padding: 0.5rem 0.9rem;">↻</button>
+                </form>
+              </td>
+              <td>
+                <form action="/cart/remove" method="POST">
+                  <input type="hidden" name="productId" value="<%= item.productId %>" />
+                  <input type="hidden" name="size" value="<%= item.size %>" />
+                  <button type="submit" class="btn btn-outline" style="padding: 0.5rem 0.9rem;"><%= t('cart.remove') %></button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <div class="cart-summary">
+        <div class="cart-summary-box">
+          <div class="cart-summary-row total">
+            <span><%= t('cart.subtotal') %></span>
+            <span><%= subtotal.toLocaleString('vi-VN') %> ₫</span>
+          </div>
+          <a href="/checkout" class="btn btn-primary btn-block" style="margin-top: 1rem;"><%= t('cart.checkout') %></a>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</section>
