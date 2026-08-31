@@ -21,6 +21,9 @@ body.admin-body {
 .admin-sidebar .wordmark {
   color: var(--bone);
   font-size: 1.2rem;
+}
+
+.admin-sidebar .brand-lockup {
   margin-bottom: var(--space-4);
   padding: 0 var(--space-1);
 }

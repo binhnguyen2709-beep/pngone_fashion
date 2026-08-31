@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%= title %> · PNG ONE Admin</title>
+  <link rel="icon" href="/images/favicon-64.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/admin.css" />
@@ -11,7 +12,10 @@
 <body class="admin-body">
   <div class="admin-shell">
     <aside class="admin-sidebar">
-      <a href="/admin" class="wordmark">PNG ONE</a>
+      <a href="/admin" class="brand-lockup">
+        <img src="/images/logo-mark.png" alt="PNG ONE FASHION" class="brand-logo" />
+        <span class="wordmark">PNG ONE</span>
+      </a>
       <ul class="admin-nav">
         <li><a href="/admin" class="<%= currentPath === '/admin' ? 'active' : '' %>">Bảng điều khiển</a></li>
         <li><a href="/admin/products" class="<%= currentPath.startsWith('/admin/products') ? 'active' : '' %>">Sản phẩm</a></li>

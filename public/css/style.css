@@ -143,6 +143,23 @@ h3 {
   white-space: nowrap;
 }
 
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-logo {
+  height: 34px;
+  width: auto;
+}
+
+.footer-logo {
+  height: 56px;
+  width: auto;
+  margin-bottom: var(--space-1);
+}
+
 .nav-links {
   display: flex;
   gap: var(--space-3);
