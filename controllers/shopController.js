@@ -17,12 +17,22 @@ exports.collection = async (req, res, next) => {
   try {
     const categories = await Category.find().sort({ order: 1 });
     const activeSlug = req.params.slug || null;
-    const filter = activeSlug ? { category: (await Category.findOne({ slug: activeSlug }))?._id } : {};
-    const products = await Product.find(filter).sort({ createdAt: -1 }).populate('category');
+    const activeCategories = activeSlug ? categories.filter((c) => c.slug === activeSlug) : categories;
+    const products = await Product.find({ category: { $in: activeCategories.map((c) => c._id) } })
+      .sort({ createdAt: -1 })
+      .populate('category');
+
+    const groups = activeCategories
+      .map((category) => ({
+        category,
+        products: products.filter((p) => p.category && p.category._id.equals(category._id))
+      }))
+      .filter((group) => group.products.length > 0);
+
     res.render('shop/collection', {
       title: 'PNG ONE FASHION',
       categories,
-      products,
+      groups,
       activeSlug
     });
   } catch (err) {

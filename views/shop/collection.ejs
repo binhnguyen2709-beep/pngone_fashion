@@ -14,20 +14,27 @@
       <% }) %>
     </div>
 
-    <% if (products.length === 0) { %>
+    <% if (groups.length === 0) { %>
       <div class="empty-state"><%= t('collection.empty') %></div>
     <% } else { %>
-      <div class="product-grid">
-        <% products.forEach(function(product) { %>
-          <a class="product-card" href="/product/<%= product.slug %>">
-            <%- include('../partials/swatch', { product }) %>
-            <div class="product-meta">
-              <span class="name"><%= field(product.name) %></span>
-              <span class="price"><%= product.price.toLocaleString('vi-VN') %> ₫</span>
-            </div>
-          </a>
-        <% }) %>
-      </div>
+      <% groups.forEach(function(group) { %>
+        <div class="collection-group">
+          <div class="section-head">
+            <h2 class="section-title"><%= field(group.category.name) %></h2>
+          </div>
+          <div class="product-grid">
+            <% group.products.forEach(function(product) { %>
+              <a class="product-card" href="/product/<%= product.slug %>">
+                <%- include('../partials/swatch', { product }) %>
+                <div class="product-meta">
+                  <span class="name"><%= field(product.name) %></span>
+                  <span class="price"><%= product.price.toLocaleString('vi-VN') %> ₫</span>
+                </div>
+              </a>
+            <% }) %>
+          </div>
+        </div>
+      <% }) %>
     <% } %>
   </div>
 </section>

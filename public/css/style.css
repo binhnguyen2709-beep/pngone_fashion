@@ -583,6 +583,14 @@ h3 {
   margin-bottom: var(--space-4);
 }
 
+.collection-group + .collection-group {
+  margin-top: var(--space-5);
+}
+
+.collection-group .section-head {
+  margin-bottom: var(--space-3);
+}
+
 .filter-pill {
   padding: 0.5rem 1.1rem;
   border: 1px solid var(--line);
