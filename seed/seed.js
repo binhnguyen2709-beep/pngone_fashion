@@ -15,40 +15,43 @@ const categories = [
 const products = [
   {
     slug: 'ao-khoac-len-oxblood',
-    name: { vi: 'Áo khoác len Oxblood', en: 'Oxblood Wool Coat' },
+    name: { vi: 'Áo khoác da Forest', en: 'Forest Leather Jacket' },
     description: {
-      vi: 'Áo khoác len dáng dài, đường may thủ công, sản xuất theo lô giới hạn.',
-      en: 'A long wool coat with hand-finished seams, produced in a limited run.'
+      vi: 'Áo khoác da form crop, sắc xanh rêu trầm, đường may thủ công, sản xuất theo lô giới hạn.',
+      en: 'A cropped faux-leather jacket in deep forest green with hand-finished seams, produced in a limited run.'
     },
     categorySlug: 'ao-khoac',
     price: 8900000,
-    swatchTone: 'oxblood',
+    images: ['/images/products/ao-khoac-len-oxblood.jpg'],
+    swatchTone: 'forest',
     sizes: ['S', 'M', 'L'],
     featured: true
   },
   {
     slug: 'dam-lua-ivory',
-    name: { vi: 'Đầm lụa Ivory', en: 'Ivory Silk Slip Dress' },
+    name: { vi: 'Đầm lụa Ink', en: 'Ink Silk Slip Dress' },
     description: {
-      vi: 'Đầm lụa rũ mềm, đường cắt tối giản, phù hợp cả ngày lẫn tối.',
-      en: 'Fluid silk with a minimal cut, equally at home by day or evening.'
+      vi: 'Đầm lụa dây mảnh, sắc đen ánh kim, đường cắt tối giản, phù hợp cả ngày lẫn tối.',
+      en: 'Fluid silk in a deep charcoal tone with a minimal cut, equally at home by day or evening.'
     },
     categorySlug: 'dam',
     price: 6400000,
-    swatchTone: 'bone',
+    images: ['/images/products/dam-lua-ivory.jpg'],
+    swatchTone: 'ink',
     sizes: ['XS', 'S', 'M'],
     featured: true
   },
   {
     slug: 'ao-so-mi-lanh-brass',
-    name: { vi: 'Áo sơ mi lanh Brass', en: 'Brass Linen Shirt' },
+    name: { vi: 'Áo sơ mi lanh Bone', en: 'Bone Linen Shirt' },
     description: {
-      vi: 'Áo sơ mi vải lanh tự nhiên, khuy đồng thau, form suông thoải mái.',
-      en: 'Natural linen shirt with brass buttons and a relaxed silhouette.'
+      vi: 'Áo sơ mi vải lanh tự nhiên, form suông thoải mái, sắc trắng ngà dịu nhẹ.',
+      en: 'Natural linen shirt with a relaxed silhouette in a soft bone white.'
     },
     categorySlug: 'ao-so-mi',
     price: 3200000,
-    swatchTone: 'brass',
+    images: ['/images/products/ao-so-mi-lanh-brass.jpg'],
+    swatchTone: 'bone',
     sizes: ['S', 'M', 'L', 'XL'],
     featured: true
   },
@@ -61,35 +64,38 @@ const products = [
     },
     categorySlug: 'quan-vay',
     price: 4100000,
+    images: ['/images/products/quan-tay-ink.jpg'],
     swatchTone: 'ink',
     sizes: ['S', 'M', 'L'],
     featured: true
   },
   {
     slug: 'chan-vay-forest',
-    name: { vi: 'Chân váy midi Forest', en: 'Forest Midi Skirt' },
+    name: { vi: 'Chân váy midi Denim', en: 'Denim Midi Skirt' },
     description: {
-      vi: 'Chân váy midi xếp ly nhẹ, sắc xanh forest trầm ấm.',
-      en: 'A softly pleated midi skirt in a deep, warm forest green.'
+      vi: 'Chân váy midi vải denim nhẹ, thắt eo tự buộc, phom xòe nhẹ nhàng.',
+      en: 'A lightweight denim midi skirt with a self-tie waist and a softly flared silhouette.'
     },
     categorySlug: 'quan-vay',
     price: 3600000,
-    swatchTone: 'forest',
+    images: ['/images/products/chan-vay-forest.jpg'],
+    swatchTone: 'bone',
     sizes: ['XS', 'S', 'M', 'L'],
-    featured: false
+    featured: true
   },
   {
     slug: 'dam-so-mi-ink',
-    name: { vi: 'Đầm sơ mi Ink', en: 'Ink Shirt Dress' },
+    name: { vi: 'Đầm sơ mi Bone', en: 'Bone Shirt Dress' },
     description: {
-      vi: 'Đầm sơ mi dáng dài, thắt lưng rời, mặc được cả bốn mùa.',
-      en: 'A long shirt dress with a detachable belt, wearable across seasons.'
+      vi: 'Đầm sơ mi dáng dài, thắt lưng rời, sắc trắng ngà ấm áp, mặc được cả bốn mùa.',
+      en: 'A long shirt dress with a detachable belt in a warm bone white, wearable across seasons.'
     },
     categorySlug: 'dam',
     price: 5200000,
-    swatchTone: 'ink',
+    images: ['/images/products/dam-so-mi-ink.jpg'],
+    swatchTone: 'bone',
     sizes: ['S', 'M', 'L'],
-    featured: false
+    featured: true
   }
 ];
 

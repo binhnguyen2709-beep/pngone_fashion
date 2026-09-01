@@ -20,9 +20,7 @@
       <div class="product-grid">
         <% products.forEach(function(product) { %>
           <a class="product-card" href="/product/<%= product.slug %>">
-            <div class="swatch swatch-<%= product.swatchTone %>">
-              <span class="swatch-tag"><%= field(product.name) %></span>
-            </div>
+            <%- include('../partials/swatch', { product }) %>
             <div class="product-meta">
               <span class="name"><%= field(product.name) %></span>
               <span class="price"><%= product.price.toLocaleString('vi-VN') %> ₫</span>

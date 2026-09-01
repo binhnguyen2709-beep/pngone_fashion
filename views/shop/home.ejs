@@ -8,6 +8,7 @@
       <a href="/collection" class="btn btn-primary"><%= t('home.heroCta') %></a>
     </div>
     <div class="hero-visual">
+      <img src="/images/hero.jpg" alt="<%= locale === 'en' ? 'PNG ONE FASHION — Autumn/Winter collection' : 'PNG ONE FASHION — Bộ sưu tập Thu Đông' %>" />
       <span class="hero-visual-label">SS26 · N°1</span>
     </div>
   </div>
@@ -22,42 +23,51 @@
       </div>
       <a href="/collection" class="btn btn-outline"><%= t('home.viewAll') %></a>
     </div>
-    <div class="product-grid">
-      <% featured.forEach(function(product) { %>
-        <a class="product-card" href="/product/<%= product.slug %>" data-reveal>
-          <div class="swatch swatch-<%= product.swatchTone %>">
-            <span class="swatch-tag"><%= field(product.name) %></span>
-          </div>
-          <div class="product-meta">
-            <span class="name"><%= field(product.name) %></span>
-            <span class="price"><%= product.price.toLocaleString('vi-VN') %> ₫</span>
-          </div>
-        </a>
-      <% }) %>
-    </div>
+    <% if (featured.length) { %>
+      <div class="product-grid">
+        <% featured.forEach(function(product) { %>
+          <a class="product-card" href="/product/<%= product.slug %>" data-reveal>
+            <%- include('../partials/swatch', { product }) %>
+            <div class="product-meta">
+              <span class="name"><%= field(product.name) %></span>
+            </div>
+          </a>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <div class="empty-state"><%= locale === 'en' ? 'New arrivals are on their way — check back soon.' : 'Sản phẩm mới sắp ra mắt — quay lại sau nhé.' %></div>
+    <% } %>
   </div>
 </section>
 
 <section class="section" id="philosophy" style="background: var(--bone);">
   <div class="wrap">
-    <div class="section-head" data-reveal>
-      <div>
-        <span class="eyebrow"><%= t('home.philosophyEyebrow') %></span>
-        <h2 class="section-title"><%= t('home.philosophyTitle') %></h2>
+    <div class="story-grid">
+      <div class="story-image" data-reveal>
+        <img src="/images/story.jpg" alt="<%= locale === 'en' ? 'Inside the PNG ONE atelier' : 'Bên trong xưởng may của PNG ONE' %>" />
+        <span class="story-image-label" aria-hidden="true"><%= locale === 'en' ? 'The Atelier' : 'Xưởng may' %></span>
       </div>
-    </div>
-    <div class="philosophy-grid">
-      <div class="philosophy-item" data-reveal>
-        <h3><%= t('home.philosophy1Title') %></h3>
-        <p><%= t('home.philosophy1Body') %></p>
-      </div>
-      <div class="philosophy-item" data-reveal>
-        <h3><%= t('home.philosophy2Title') %></h3>
-        <p><%= t('home.philosophy2Body') %></p>
-      </div>
-      <div class="philosophy-item" data-reveal>
-        <h3><%= t('home.philosophy3Title') %></h3>
-        <p><%= t('home.philosophy3Body') %></p>
+      <div class="story-content">
+        <div class="section-head" data-reveal style="margin-bottom: var(--space-3);">
+          <div>
+            <span class="eyebrow"><%= t('home.philosophyEyebrow') %></span>
+            <h2 class="section-title"><%= t('home.philosophyTitle') %></h2>
+          </div>
+        </div>
+        <div class="philosophy-list">
+          <div class="philosophy-item" data-reveal>
+            <h3><%= t('home.philosophy1Title') %></h3>
+            <p><%= t('home.philosophy1Body') %></p>
+          </div>
+          <div class="philosophy-item" data-reveal>
+            <h3><%= t('home.philosophy2Title') %></h3>
+            <p><%= t('home.philosophy2Body') %></p>
+          </div>
+          <div class="philosophy-item" data-reveal>
+            <h3><%= t('home.philosophy3Title') %></h3>
+            <p><%= t('home.philosophy3Body') %></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

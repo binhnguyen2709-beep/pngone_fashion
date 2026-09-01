@@ -1,0 +1,7 @@
+<div class="swatch swatch-<%= product.swatchTone %>">
+  <% if (product.images && product.images.length) { %>
+    <img src="<%= product.images[0] %>" alt="<%= field(product.name) %>" loading="lazy" />
+  <% } else { %>
+    <span class="swatch-tag"><%= field(product.name) %></span>
+  <% } %>
+</div>
