@@ -25,7 +25,7 @@ const orderSchema = new mongoose.Schema(
       city: { type: String, required: true },
       note: String
     },
-    paymentMethod: { type: String, enum: ['cod', 'vnpay', 'momo'], required: true },
+    paymentMethod: { type: String, enum: ['cod', 'vnpay', 'momo', 'bank_qr'], required: true },
     paymentStatus: { type: String, enum: ['pending', 'paid', 'failed'], default: 'pending' },
     status: {
       type: String,

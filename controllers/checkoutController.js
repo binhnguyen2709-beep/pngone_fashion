@@ -2,6 +2,7 @@ const Order = require('../models/Order');
 const { getCart } = require('./cartController');
 const vnpay = require('../services/vnpay');
 const momo = require('../services/momo');
+const vietqr = require('../services/vietqr');
 
 function makeOrderCode() {
   const stamp = Date.now().toString(36).toUpperCase();
@@ -125,7 +126,16 @@ exports.success = async (req, res, next) => {
   try {
     const order = await Order.findOne({ orderCode: req.params.code });
     if (!order) return res.status(404).render('errors/404', { title: 'PNG ONE FASHION' });
-    res.render('shop/order-success', { title: 'PNG ONE FASHION', order });
+    const qrUrl =
+      order.paymentMethod === 'bank_qr'
+        ? vietqr.buildQrUrl({ amount: order.subtotal, addInfo: order.orderCode })
+        : null;
+    const bankInfo = {
+      name: process.env.BANK_NAME,
+      accountNo: process.env.BANK_ACCOUNT_NO,
+      accountName: process.env.BANK_ACCOUNT_NAME
+    };
+    res.render('shop/order-success', { title: 'PNG ONE FASHION', order, qrUrl, bankInfo });
   } catch (err) {
     next(err);
   }

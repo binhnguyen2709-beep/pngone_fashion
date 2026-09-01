@@ -4,6 +4,20 @@
       <span class="eyebrow"><%= t('order.successTitle') %></span>
       <h1 class="section-title" style="margin-top: 0.5rem;"><%= t('order.successBody') %></h1>
       <div class="order-code"><%= t('order.code') %>: <%= order.orderCode %></div>
+
+      <% if (qrUrl) { %>
+        <div class="bank-qr-box">
+          <p class="bank-qr-instruction"><%= t('order.bankQrInstruction') %></p>
+          <img src="<%= qrUrl %>" alt="VietQR" class="bank-qr-image" />
+          <div class="bank-qr-details">
+            <p><%= bankInfo.name %> — <%= bankInfo.accountNo %></p>
+            <p><%= bankInfo.accountName %></p>
+            <p><%= order.subtotal.toLocaleString('vi-VN') %> ₫ — <%= t('order.code') %>: <%= order.orderCode %></p>
+          </div>
+          <p class="bank-qr-note"><%= t('order.bankQrNote') %></p>
+        </div>
+      <% } %>
+
       <a href="/" class="btn btn-outline"><%= t('order.backHome') %></a>
     </div>
   </div>
