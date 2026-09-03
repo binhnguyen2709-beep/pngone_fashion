@@ -144,3 +144,12 @@ exports.orderUpdateStatus = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.orderDelete = async (req, res, next) => {
+  try {
+    await Order.findByIdAndDelete(req.params.id);
+    res.redirect('/admin/orders');
+  } catch (err) {
+    next(err);
+  }
+};

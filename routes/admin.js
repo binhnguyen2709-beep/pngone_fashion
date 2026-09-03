@@ -13,5 +13,6 @@ router.post('/products', admin.productSave);
 router.post('/products/:id/delete', admin.productDelete);
 router.get('/orders', admin.orders);
 router.post('/orders/:id/status', admin.orderUpdateStatus);
+router.post('/orders/:id/delete', admin.orderDelete);
 
 module.exports = router;
