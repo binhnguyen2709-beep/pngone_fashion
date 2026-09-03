@@ -82,7 +82,8 @@ exports.productSave = async (req, res, next) => {
       stock,
       swatchTone,
       featured,
-      slug
+      slug,
+      images
     } = req.body;
 
     const data = {
@@ -90,6 +91,10 @@ exports.productSave = async (req, res, next) => {
       description: { vi: descriptionVi || '', en: descriptionEn || '' },
       category,
       price: Number(price) || 0,
+      images: (images || '')
+        .split('\n')
+        .map((s) => s.trim())
+        .filter(Boolean),
       sizes: (sizes || '')
         .split(',')
         .map((s) => s.trim())

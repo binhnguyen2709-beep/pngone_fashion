@@ -48,6 +48,11 @@
       <input type="number" name="price" value="<%= product ? product.price : '' %>" required min="0" />
     </div>
 
+    <div class="form-row full">
+      <label class="field-label">Hình ảnh (mỗi dòng một đường dẫn URL)</label>
+      <textarea name="images" placeholder="https://example.com/anh-1.jpg&#10;/images/products/ao-khoac.jpg"><%= product ? product.images.join('\n') : '' %></textarea>
+    </div>
+
     <div class="form-row">
       <label class="field-label">Kích cỡ (phân cách bởi dấu phẩy)</label>
       <input type="text" name="sizes" value="<%= product ? product.sizes.join(', ') : 'S, M, L' %>" />
