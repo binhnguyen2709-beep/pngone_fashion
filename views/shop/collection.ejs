@@ -1,13 +1,13 @@
 <section class="section">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <div>
         <span class="eyebrow"><%= t('nav.collection') %></span>
         <h1 class="section-title"><%= t('collection.title') %></h1>
       </div>
     </div>
 
-    <div class="filter-row">
+    <div class="filter-row" data-reveal>
       <a href="/collection" class="filter-pill <%= !activeSlug ? 'active' : '' %>"><%= t('collection.filterAll') %></a>
       <% categories.forEach(function(cat) { %>
         <a href="/collection/<%= cat.slug %>" class="filter-pill <%= activeSlug === cat.slug ? 'active' : '' %>"><%= field(cat.name) %></a>
@@ -19,12 +19,12 @@
     <% } else { %>
       <% groups.forEach(function(group) { %>
         <div class="collection-group">
-          <div class="section-head">
+          <div class="section-head" data-reveal>
             <h2 class="section-title"><%= field(group.category.name) %></h2>
           </div>
           <div class="product-grid">
-            <% group.products.forEach(function(product) { %>
-              <a class="product-card" href="/product/<%= product.slug %>">
+            <% group.products.forEach(function(product, i) { %>
+              <a class="product-card" href="/product/<%= product.slug %>" data-reveal style="--reveal-i: <%= i %>;">
                 <%- include('../partials/swatch', { product }) %>
                 <div class="product-meta">
                   <span class="name"><%= field(product.name) %></span>

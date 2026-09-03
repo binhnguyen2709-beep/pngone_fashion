@@ -2,12 +2,12 @@
   <span class="hero-bleed-word" aria-hidden="true">PNG ONE</span>
   <div class="hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow eyebrow--light"><%= t('home.heroEyebrow') %></span>
-      <h1 class="hero-title"><%= t('home.heroTitle') %></h1>
-      <p class="hero-subtitle"><%= t('home.heroSubtitle') %></p>
-      <a href="/collection" class="btn btn-primary"><%= t('home.heroCta') %></a>
+      <span class="eyebrow eyebrow--light" data-reveal style="--reveal-i: 0;"><%= t('home.heroEyebrow') %></span>
+      <h1 class="hero-title" data-reveal style="--reveal-i: 1;"><%= t('home.heroTitle') %></h1>
+      <p class="hero-subtitle" data-reveal style="--reveal-i: 2;"><%= t('home.heroSubtitle') %></p>
+      <a href="/collection" class="btn btn-primary" data-reveal style="--reveal-i: 3;"><%= t('home.heroCta') %></a>
     </div>
-    <div class="hero-visual">
+    <div class="hero-visual" data-reveal style="--reveal-i: 1;">
       <img src="/images/hero.jpg" alt="<%= locale === 'en' ? 'PNG ONE FASHION — Autumn/Winter collection' : 'PNG ONE FASHION — Bộ sưu tập Thu Đông' %>" />
       <span class="hero-visual-label">SS26 · N°1</span>
     </div>
@@ -25,8 +25,8 @@
     </div>
     <% if (lookbook.length) { %>
       <div class="product-grid">
-        <% lookbook.forEach(function(item) { %>
-          <div class="product-card" data-reveal>
+        <% lookbook.forEach(function(item, i) { %>
+          <div class="product-card" data-reveal style="--reveal-i: <%= i %>;">
             <%- include('../partials/swatch', { product: { images: [item.image], name: item.name, swatchTone: 'bone' } }) %>
             <div class="product-meta">
               <span class="name"><%= field(item.name) %></span>

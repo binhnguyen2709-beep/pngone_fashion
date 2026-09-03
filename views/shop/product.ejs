@@ -1,8 +1,10 @@
 <section class="section">
   <div class="wrap">
     <div class="product-detail">
-      <%- include('../partials/swatch', { product }) %>
-      <div>
+      <div data-reveal>
+        <%- include('../partials/swatch', { product }) %>
+      </div>
+      <div data-reveal style="--reveal-i: 1;">
         <span class="eyebrow"><%= field(product.category.name) %></span>
         <h1 class="product-title"><%= field(product.name) %></h1>
         <div class="product-detail-price"><%= product.price.toLocaleString('vi-VN') %> ₫</div>
@@ -30,14 +32,14 @@
     </div>
 
     <% if (related.length) { %>
-      <div class="section-head" style="margin-top: var(--space-6);">
+      <div class="section-head" style="margin-top: var(--space-6);" data-reveal>
         <div>
           <span class="eyebrow"><%= t('product.related') %></span>
         </div>
       </div>
       <div class="product-grid">
-        <% related.forEach(function(r) { %>
-          <a class="product-card" href="/product/<%= r.slug %>">
+        <% related.forEach(function(r, i) { %>
+          <a class="product-card" href="/product/<%= r.slug %>" data-reveal style="--reveal-i: <%= i %>;">
             <%- include('../partials/swatch', { product: r }) %>
             <div class="product-meta">
               <span class="name"><%= field(r.name) %></span>
