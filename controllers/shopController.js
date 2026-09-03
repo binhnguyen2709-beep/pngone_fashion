@@ -1,13 +1,21 @@
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 
+// Static lookbook imagery for the homepage — decorative only, not tied to real
+// (purchasable) products. Update this list by hand when the lookbook changes.
+const LOOKBOOK = [
+  { image: '/images/products/ao-khoac-len-oxblood.jpg', name: { vi: 'Áo khoác da Forest', en: 'Forest Leather Jacket' } },
+  { image: '/images/products/dam-lua-ivory.jpg', name: { vi: 'Đầm lụa Ink', en: 'Ink Silk Slip Dress' } },
+  { image: '/images/products/ao-so-mi-lanh-brass.jpg', name: { vi: 'Áo sơ mi lanh Bone', en: 'Bone Linen Shirt' } },
+  { image: '/images/products/quan-tay-ink.jpg', name: { vi: 'Quần tây Ink', en: 'Ink Tailored Trousers' } },
+  { image: '/images/products/chan-vay-forest.jpg', name: { vi: 'Chân váy midi Denim', en: 'Denim Midi Skirt' } },
+  { image: '/images/products/dam-so-mi-ink.jpg', name: { vi: 'Đầm sơ mi Bone', en: 'Bone Shirt Dress' } }
+];
+
 exports.home = async (req, res, next) => {
   try {
-    const [categories, featured] = await Promise.all([
-      Category.find().sort({ order: 1 }),
-      Product.find({ featured: true }).sort({ createdAt: -1 }).limit(6).populate('category')
-    ]);
-    res.render('shop/home', { title: 'PNG ONE FASHION', categories, featured });
+    const categories = await Category.find().sort({ order: 1 });
+    res.render('shop/home', { title: 'PNG ONE FASHION', categories, lookbook: LOOKBOOK });
   } catch (err) {
     next(err);
   }

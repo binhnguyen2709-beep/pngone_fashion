@@ -23,15 +23,15 @@
       </div>
       <a href="/collection" class="btn btn-outline"><%= t('home.viewAll') %></a>
     </div>
-    <% if (featured.length) { %>
+    <% if (lookbook.length) { %>
       <div class="product-grid">
-        <% featured.forEach(function(product) { %>
-          <a class="product-card" href="/product/<%= product.slug %>" data-reveal>
-            <%- include('../partials/swatch', { product }) %>
+        <% lookbook.forEach(function(item) { %>
+          <div class="product-card" data-reveal>
+            <%- include('../partials/swatch', { product: { images: [item.image], name: item.name, swatchTone: 'bone' } }) %>
             <div class="product-meta">
-              <span class="name"><%= field(product.name) %></span>
+              <span class="name"><%= field(item.name) %></span>
             </div>
-          </a>
+          </div>
         <% }) %>
       </div>
     <% } else { %>
