@@ -5,11 +5,21 @@ const productSchema = new mongoose.Schema(
     slug: { type: String, required: true, unique: true, lowercase: true, trim: true },
     name: {
       vi: { type: String, required: true },
-      en: { type: String, required: true }
+      en: { type: String, required: true },
+      fr: { type: String, default: '' },
+      it: { type: String, default: '' },
+      es: { type: String, default: '' },
+      zh: { type: String, default: '' },
+      ko: { type: String, default: '' }
     },
     description: {
       vi: { type: String, default: '' },
-      en: { type: String, default: '' }
+      en: { type: String, default: '' },
+      fr: { type: String, default: '' },
+      it: { type: String, default: '' },
+      es: { type: String, default: '' },
+      zh: { type: String, default: '' },
+      ko: { type: String, default: '' }
     },
     category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
     price: { type: Number, required: true },

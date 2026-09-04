@@ -8,7 +8,7 @@
       <a href="/collection" class="btn btn-primary" data-reveal style="--reveal-i: 3;"><%= t('home.heroCta') %></a>
     </div>
     <div class="hero-visual" data-reveal style="--reveal-i: 1;">
-      <img src="/images/hero.jpg" alt="<%= locale === 'en' ? 'PNG ONE FASHION — Autumn/Winter collection' : 'PNG ONE FASHION — Bộ sưu tập Thu Đông' %>" />
+      <img src="/images/hero.jpg" alt="<%= t('home.heroImageAlt') %>" />
       <span class="hero-visual-label">SS26 · N°1</span>
     </div>
   </div>
@@ -35,7 +35,7 @@
         <% }) %>
       </div>
     <% } else { %>
-      <div class="empty-state"><%= locale === 'en' ? 'New arrivals are on their way — check back soon.' : 'Sản phẩm mới sắp ra mắt — quay lại sau nhé.' %></div>
+      <div class="empty-state"><%= t('home.emptyFeatured') %></div>
     <% } %>
   </div>
 </section>
@@ -44,8 +44,8 @@
   <div class="wrap">
     <div class="story-grid">
       <div class="story-image" data-reveal>
-        <img src="/images/story.jpg" alt="<%= locale === 'en' ? 'Inside the PNG ONE atelier' : 'Bên trong xưởng may của PNG ONE' %>" />
-        <span class="story-image-label" aria-hidden="true"><%= locale === 'en' ? 'The Atelier' : 'Xưởng may' %></span>
+        <img src="/images/story.jpg" alt="<%= t('home.storyImageAlt') %>" />
+        <span class="story-image-label" aria-hidden="true"><%= t('home.storyImageLabel') %></span>
       </div>
       <div class="story-content">
         <div class="section-head" data-reveal style="margin-bottom: var(--space-3);">

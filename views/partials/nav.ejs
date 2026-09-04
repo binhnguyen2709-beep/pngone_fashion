@@ -12,8 +12,15 @@
     </ul>
     <div class="nav-right">
       <div class="lang-toggle">
-        <a href="?lang=vi" class="<%= locale === 'vi' ? 'active' : '' %>"><%= t('lang.vi') %></a>
-        <a href="?lang=en" class="<%= locale === 'en' ? 'active' : '' %>"><%= t('lang.en') %></a>
+        <select onchange="if (this.value) window.location.href = this.value;" aria-label="<%= t('nav.selectLanguage') %>">
+          <option value="?lang=vi" <%= locale === 'vi' ? 'selected' : '' %>><%= t('lang.vi') %></option>
+          <option value="?lang=en" <%= locale === 'en' ? 'selected' : '' %>><%= t('lang.en') %></option>
+          <option value="?lang=fr" <%= locale === 'fr' ? 'selected' : '' %>><%= t('lang.fr') %></option>
+          <option value="?lang=it" <%= locale === 'it' ? 'selected' : '' %>><%= t('lang.it') %></option>
+          <option value="?lang=es" <%= locale === 'es' ? 'selected' : '' %>><%= t('lang.es') %></option>
+          <option value="?lang=zh" <%= locale === 'zh' ? 'selected' : '' %>><%= t('lang.zh') %></option>
+          <option value="?lang=ko" <%= locale === 'ko' ? 'selected' : '' %>><%= t('lang.ko') %></option>
+        </select>
       </div>
       <a href="/cart" class="cart-link"><%= t('nav.cart') %><span class="cart-badge"><%= cartCount %></span></a>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>

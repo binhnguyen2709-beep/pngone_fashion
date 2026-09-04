@@ -198,13 +198,15 @@ h3 {
   letter-spacing: 0.08em;
 }
 
-.lang-toggle a {
+.lang-toggle select {
+  border: none;
+  background: transparent;
   padding: 0.3rem 0.65rem;
-}
-
-.lang-toggle a.active {
-  background: var(--ink);
-  color: var(--paper);
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: uppercase;
+  color: inherit;
+  cursor: pointer;
 }
 
 .cart-link {
