@@ -41,6 +41,7 @@ exports.placeOrder = async (req, res, next) => {
         name: i.name,
         price: i.price,
         size: i.size,
+        color: i.color,
         qty: i.qty,
         swatchTone: i.swatchTone
       })),

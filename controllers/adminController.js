@@ -77,6 +77,7 @@ exports.productSave = async (req, res, next) => {
       descriptionEn,
       category,
       price,
+      compareAtPrice,
       sizes,
       colors,
       stock,
@@ -91,6 +92,7 @@ exports.productSave = async (req, res, next) => {
       description: { vi: descriptionVi || '', en: descriptionEn || '' },
       category,
       price: Number(price) || 0,
+      compareAtPrice: compareAtPrice ? Number(compareAtPrice) : null,
       images: (images || '')
         .split('\n')
         .map((s) => s.trim())
@@ -100,9 +102,14 @@ exports.productSave = async (req, res, next) => {
         .map((s) => s.trim())
         .filter(Boolean),
       colors: (colors || '')
-        .split(',')
+        .split('\n')
         .map((s) => s.trim())
-        .filter(Boolean),
+        .filter(Boolean)
+        .map((line) => {
+          const [name, hex] = line.split('|').map((part) => part.trim());
+          return { name, hex: hex || '#000000' };
+        })
+        .filter((c) => c.name),
       stock: Number(stock) || 0,
       swatchTone: swatchTone || 'bone',
       featured: featured === 'on',
@@ -124,6 +131,38 @@ exports.productDelete = async (req, res, next) => {
   try {
     await Product.findByIdAndDelete(req.params.id);
     res.redirect('/admin/products');
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.categories = async (req, res, next) => {
+  try {
+    const categories = await Category.find().sort({ order: 1 });
+    res.render('admin/categories', { title: 'Danh mục', layout: 'admin/layout', categories, error: null });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.categorySave = async (req, res, next) => {
+  try {
+    const { nameVi, nameEn, slug, order } = req.body;
+    await Category.create({
+      name: { vi: nameVi, en: nameEn || nameVi },
+      slug: slugify(slug || nameEn || nameVi),
+      order: Number(order) || 0
+    });
+    res.redirect('/admin/categories');
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.categoryDelete = async (req, res, next) => {
+  try {
+    await Category.findByIdAndDelete(req.params.id);
+    res.redirect('/admin/categories');
   } catch (err) {
     next(err);
   }

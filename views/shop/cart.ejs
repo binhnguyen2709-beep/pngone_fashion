@@ -24,7 +24,10 @@
                   <div class="swatch swatch-<%= item.swatchTone %>"></div>
                   <div>
                     <div class="name"><%= item.name %></div>
-                    <div style="font-size: 0.82rem; color: rgba(21,20,15,0.6);"><%= t('product.size') %>: <%= item.size %></div>
+                    <div style="font-size: 0.82rem; color: rgba(21,20,15,0.6);">
+                      <% if (item.size) { %><%= t('product.size') %>: <%= item.size %><% } %>
+                      <% if (item.color) { %><% if (item.size) { %> · <% } %><%= t('product.color') %>: <%= item.color %><% } %>
+                    </div>
                     <div style="font-size: 0.9rem; margin-top: 0.2rem;"><%= item.price.toLocaleString('vi-VN') %> ₫</div>
                   </div>
                 </div>
@@ -33,6 +36,7 @@
                 <form action="/cart/update" method="POST" style="display:flex; gap:0.5rem; align-items:center;">
                   <input type="hidden" name="productId" value="<%= item.productId %>" />
                   <input type="hidden" name="size" value="<%= item.size %>" />
+                  <input type="hidden" name="color" value="<%= item.color || '' %>" />
                   <input class="cart-qty-input" type="number" name="qty" min="1" value="<%= item.qty %>" />
                   <button type="submit" class="btn btn-outline" style="padding: 0.5rem 0.9rem;">↻</button>
                 </form>
@@ -41,6 +45,7 @@
                 <form action="/cart/remove" method="POST">
                   <input type="hidden" name="productId" value="<%= item.productId %>" />
                   <input type="hidden" name="size" value="<%= item.size %>" />
+                  <input type="hidden" name="color" value="<%= item.color || '' %>" />
                   <button type="submit" class="btn btn-outline" style="padding: 0.5rem 0.9rem;"><%= t('cart.remove') %></button>
                 </form>
               </td>

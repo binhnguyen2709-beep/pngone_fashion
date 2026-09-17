@@ -23,8 +23,18 @@ const productSchema = new mongoose.Schema(
     },
     category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
     price: { type: Number, required: true },
+    compareAtPrice: { type: Number, default: null },
     sizes: { type: [String], default: ['S', 'M', 'L'] },
-    colors: { type: [String], default: [] },
+    colors: {
+      type: [
+        {
+          name: { type: String, required: true },
+          hex: { type: String, required: true },
+          _id: false
+        }
+      ],
+      default: []
+    },
     stock: { type: Number, default: 20 },
     images: { type: [String], default: [] },
     swatchTone: {

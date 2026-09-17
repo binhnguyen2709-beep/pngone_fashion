@@ -9,7 +9,8 @@ const categories = [
   { slug: 'ao-khoac', name: { vi: 'Áo khoác', en: 'Outerwear' }, order: 1 },
   { slug: 'dam', name: { vi: 'Đầm', en: 'Dresses' }, order: 2 },
   { slug: 'ao-so-mi', name: { vi: 'Áo sơ mi & Áo', en: 'Shirts & Tops' }, order: 3 },
-  { slug: 'quan-vay', name: { vi: 'Quần & Chân váy', en: 'Trousers & Skirts' }, order: 4 }
+  { slug: 'quan-vay', name: { vi: 'Quần & Chân váy', en: 'Trousers & Skirts' }, order: 4 },
+  { slug: 'ao-polo', name: { vi: 'Áo Polo', en: 'Polo Shirts' }, order: 5 }
 ];
 
 const products = [
@@ -96,6 +97,45 @@ const products = [
     swatchTone: 'bone',
     sizes: ['S', 'M', 'L'],
     featured: true
+  },
+  {
+    slug: 'ao-polo-basic-ink',
+    name: { vi: 'Áo Polo Basic Ink', en: 'Ink Basic Polo' },
+    description: {
+      vi: 'Áo polo cotton cá sấu form regular, cổ bo dệt kim, phù hợp mặc hằng ngày lẫn công sở.',
+      en: 'A regular-fit piqué cotton polo with a ribbed knit collar, easy for both everyday wear and the office.'
+    },
+    categorySlug: 'ao-polo',
+    price: 289000,
+    compareAtPrice: 369000,
+    images: [],
+    swatchTone: 'ink',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: [
+      { name: 'Đen', hex: '#15140f' },
+      { name: 'Trắng', hex: '#faf8f3' },
+      { name: 'Xám đậm', hex: '#4b4b4b' }
+    ],
+    featured: false
+  },
+  {
+    slug: 'ao-polo-basic-forest',
+    name: { vi: 'Áo Polo Basic Forest', en: 'Forest Basic Polo' },
+    description: {
+      vi: 'Áo polo cotton cá sấu form regular, sắc xanh rêu trầm, đường may chắc chắn.',
+      en: 'A regular-fit piqué cotton polo in deep forest green with sturdy, clean stitching.'
+    },
+    categorySlug: 'ao-polo',
+    price: 289000,
+    compareAtPrice: 369000,
+    images: [],
+    swatchTone: 'forest',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: [
+      { name: 'Xanh rêu', hex: '#2f3b2a' },
+      { name: 'Trắng', hex: '#faf8f3' }
+    ],
+    featured: false
   }
 ];
 

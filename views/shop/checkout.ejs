@@ -70,7 +70,7 @@
           <h2 style="font-size: 1.1rem; margin-bottom: var(--space-2);"><%= t('checkout.orderSummary') %></h2>
           <% cart.forEach(function(item) { %>
             <div class="line-item">
-              <span><%= item.name %> (<%= item.size %>) × <%= item.qty %></span>
+              <span><%= item.name %> (<%= [item.size, item.color].filter(Boolean).join(' / ') %>) × <%= item.qty %></span>
               <span><%= (item.price * item.qty).toLocaleString('vi-VN') %> ₫</span>
             </div>
           <% }) %>

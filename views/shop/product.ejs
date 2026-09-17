@@ -1,17 +1,55 @@
 <section class="section">
   <div class="wrap">
     <div class="product-detail">
-      <div data-reveal>
-        <%- include('../partials/swatch', { product }) %>
+      <div class="product-gallery" data-reveal>
+        <div class="swatch swatch-<%= product.swatchTone %> gallery-main" id="galleryMain">
+          <% if (product.images && product.images.length) { %>
+            <img id="galleryMainImg" src="<%= product.images[0] %>" alt="<%= field(product.name) %>" />
+          <% } else { %>
+            <span class="swatch-tag"><%= field(product.name) %></span>
+          <% } %>
+        </div>
+        <% if (product.images && product.images.length > 1) { %>
+          <div class="gallery-thumbs">
+            <% product.images.forEach(function(img, i) { %>
+              <button type="button" class="gallery-thumb <%= i === 0 ? 'active' : '' %>" data-src="<%= img %>">
+                <img src="<%= img %>" alt="<%= field(product.name) %> <%= i + 1 %>" loading="lazy" />
+              </button>
+            <% }) %>
+          </div>
+        <% } %>
       </div>
       <div data-reveal style="--reveal-i: 1;">
         <span class="eyebrow"><%= field(product.category.name) %></span>
         <h1 class="product-title"><%= field(product.name) %></h1>
-        <div class="product-detail-price"><%= product.price.toLocaleString('vi-VN') %> ₫</div>
-        <p class="product-description"><%= field(product.description) %></p>
+
+        <div class="product-price-row">
+          <span class="product-detail-price"><%= product.price.toLocaleString('vi-VN') %> ₫</span>
+          <% if (product.compareAtPrice && product.compareAtPrice > product.price) { %>
+            <span class="price-compare"><%= product.compareAtPrice.toLocaleString('vi-VN') %> ₫</span>
+            <span class="price-discount-badge">-<%= Math.round((1 - product.price / product.compareAtPrice) * 100) %>%</span>
+          <% } %>
+        </div>
+
+        <details class="product-description-panel" open>
+          <summary><%= t('product.description') %></summary>
+          <p class="product-description"><%= field(product.description) %></p>
+        </details>
 
         <form action="/cart/add" method="POST">
           <input type="hidden" name="productId" value="<%= product._id %>" />
+
+          <% if (product.colors && product.colors.length) { %>
+            <span class="field-label"><%= t('product.color') %></span>
+            <div class="color-row">
+              <% product.colors.forEach(function(c, i) { %>
+                <label class="color-option" style="--swatch-color: <%= c.hex %>;" title="<%= c.name %>">
+                  <input type="radio" name="color" value="<%= c.name %>" <%= i === 0 ? 'checked' : '' %> />
+                </label>
+              <% }) %>
+            </div>
+          <% } %>
+
           <% if (product.sizes.length) { %>
             <span class="field-label"><%= t('product.size') %></span>
             <div class="size-row">
@@ -23,10 +61,20 @@
               <% }) %>
             </div>
           <% } %>
-          <span class="field-label"><%= t('cart.qty') %></span>
-          <input type="number" name="qty" value="1" min="1" style="width:5rem; margin-bottom: 1.5rem;" />
-          <br />
-          <button type="submit" class="btn btn-primary"><%= t('product.addToCart') %></button>
+
+          <span class="field-label"><%= t('product.quantity') %></span>
+          <div class="qty-stepper">
+            <button type="button" class="qty-btn" data-qty-decrement aria-label="-">−</button>
+            <input type="number" name="qty" value="1" min="1" class="qty-input" />
+            <button type="button" class="qty-btn" data-qty-increment aria-label="+">+</button>
+          </div>
+
+          <div class="stock-status <%= product.stock > 0 ? 'in-stock' : 'out-of-stock' %>">
+            <span class="stock-dot"></span>
+            <%= product.stock > 0 ? t('product.inStock') : t('product.outOfStock') %>
+          </div>
+
+          <button type="submit" class="btn btn-primary" <%= product.stock > 0 ? '' : 'disabled' %>><%= t('product.addToCart') %></button>
         </form>
       </div>
     </div>

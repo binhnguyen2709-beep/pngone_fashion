@@ -47,6 +47,10 @@
       <label class="field-label">Giá (VND) *</label>
       <input type="number" name="price" value="<%= product ? product.price : '' %>" required min="0" />
     </div>
+    <div class="form-row">
+      <label class="field-label">Giá gốc (so sánh, không bắt buộc)</label>
+      <input type="number" name="compareAtPrice" value="<%= product && product.compareAtPrice ? product.compareAtPrice : '' %>" min="0" placeholder="Để trống nếu không giảm giá" />
+    </div>
 
     <div class="form-row full">
       <label class="field-label">Hình ảnh (mỗi dòng một đường dẫn URL)</label>
@@ -57,9 +61,9 @@
       <label class="field-label">Kích cỡ (phân cách bởi dấu phẩy)</label>
       <input type="text" name="sizes" value="<%= product ? product.sizes.join(', ') : 'S, M, L' %>" />
     </div>
-    <div class="form-row">
-      <label class="field-label">Màu sắc (phân cách bởi dấu phẩy)</label>
-      <input type="text" name="colors" value="<%= product ? product.colors.join(', ') : '' %>" />
+    <div class="form-row full">
+      <label class="field-label">Màu sắc (mỗi dòng: Tên màu | #hex)</label>
+      <textarea name="colors" placeholder="Xám đậm | #4b4b4b&#10;Trắng | #ffffff"><%= product && product.colors.length ? product.colors.map(function(c) { return c.name + ' | ' + c.hex; }).join('\n') : '' %></textarea>
     </div>
 
     <div class="form-row">

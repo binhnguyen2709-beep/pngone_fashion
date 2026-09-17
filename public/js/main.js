@@ -23,4 +23,30 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     revealEls.forEach((el) => io.observe(el));
   }
+
+  const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+  const galleryMainImg = document.getElementById('galleryMainImg');
+  if (galleryThumbs.length && galleryMainImg) {
+    galleryThumbs.forEach((thumb) => {
+      thumb.addEventListener('click', () => {
+        galleryMainImg.src = thumb.dataset.src;
+        galleryThumbs.forEach((t) => t.classList.remove('active'));
+        thumb.classList.add('active');
+      });
+    });
+  }
+
+  document.querySelectorAll('.qty-stepper').forEach((stepper) => {
+    const input = stepper.querySelector('.qty-input');
+    const decrement = stepper.querySelector('[data-qty-decrement]');
+    const increment = stepper.querySelector('[data-qty-increment]');
+    if (!input) return;
+    decrement?.addEventListener('click', () => {
+      const min = parseInt(input.min, 10) || 1;
+      input.value = Math.max(min, (parseInt(input.value, 10) || 1) - 1);
+    });
+    increment?.addEventListener('click', () => {
+      input.value = (parseInt(input.value, 10) || 1) + 1;
+    });
+  });
 });

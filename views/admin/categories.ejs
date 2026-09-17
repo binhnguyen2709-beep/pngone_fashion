@@ -1,0 +1,64 @@
+<div class="admin-topbar">
+  <h1>Danh mục</h1>
+</div>
+
+<% if (error) { %>
+  <div class="form-error"><%= error %></div>
+<% } %>
+
+<div class="admin-panel">
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Tên (Tiếng Việt)</th>
+        <th>Tên (Tiếng Anh)</th>
+        <th>Đường dẫn (slug)</th>
+        <th>Thứ tự</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (!categories.length) { %>
+        <tr><td colspan="5">Chưa có danh mục nào.</td></tr>
+      <% } %>
+      <% categories.forEach(function(c) { %>
+        <tr>
+          <td><%= c.name.vi %></td>
+          <td><%= c.name.en %></td>
+          <td><%= c.slug %></td>
+          <td><%= c.order %></td>
+          <td class="table-actions">
+            <form action="/admin/categories/<%= c._id %>/delete" method="POST" onsubmit="return confirm('Xoá danh mục này? Sản phẩm thuộc danh mục này sẽ không còn hiển thị theo danh mục.');">
+              <button type="submit">Xoá</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<div class="admin-panel" style="margin-top: var(--space-3);">
+  <h2 style="font-size: 1.1rem; margin-bottom: var(--space-2);">Thêm danh mục</h2>
+  <form action="/admin/categories" method="POST" class="admin-form-grid">
+    <div class="form-row">
+      <label class="field-label">Tên (Tiếng Việt) *</label>
+      <input type="text" name="nameVi" required />
+    </div>
+    <div class="form-row">
+      <label class="field-label">Tên (Tiếng Anh)</label>
+      <input type="text" name="nameEn" />
+    </div>
+    <div class="form-row">
+      <label class="field-label">Đường dẫn (slug)</label>
+      <input type="text" name="slug" placeholder="ao-polo" />
+    </div>
+    <div class="form-row">
+      <label class="field-label">Thứ tự hiển thị</label>
+      <input type="number" name="order" value="0" />
+    </div>
+    <div class="form-row full">
+      <button type="submit" class="btn btn-primary">Lưu danh mục</button>
+    </div>
+  </form>
+</div>

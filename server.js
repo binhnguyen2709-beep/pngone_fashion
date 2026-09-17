@@ -8,6 +8,7 @@ const expressLayouts = require('express-ejs-layouts');
 
 const connectDB = require('./config/db');
 const locale = require('./middleware/locale');
+const Category = require('./models/Category');
 
 const shopRoutes = require('./routes/shop');
 const cartRoutes = require('./routes/cart');
@@ -40,11 +41,16 @@ app.use(
 );
 
 app.use(locale);
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
   const cart = req.session.cart || [];
   res.locals.cartCount = cart.reduce((sum, i) => sum + i.qty, 0);
   res.locals.currentPath = req.path;
   res.locals.brand = 'PNG ONE FASHION';
+  try {
+    res.locals.footerCategories = await Category.find().sort({ order: 1 });
+  } catch (err) {
+    res.locals.footerCategories = [];
+  }
   next();
 });
 

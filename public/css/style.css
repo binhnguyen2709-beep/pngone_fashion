@@ -632,20 +632,157 @@ h3 {
   aspect-ratio: 4 / 5;
 }
 
+.gallery-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--space-2);
+}
+
+.gallery-thumb {
+  width: 4.2rem;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  overflow: hidden;
+  background: none;
+}
+
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-thumb.active {
+  border-color: var(--ink);
+}
+
+.product-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: var(--space-1) 0 var(--space-2);
+}
+
 .product-detail-price {
   font-size: 1.4rem;
   color: var(--oxblood);
-  margin: var(--space-1) 0 var(--space-3);
+}
+
+.price-compare {
+  font-size: 1rem;
+  color: rgba(21, 20, 15, 0.45);
+  text-decoration: line-through;
+}
+
+.price-discount-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem;
+  background: var(--oxblood);
+  color: var(--paper);
 }
 
 .product-title {
   font-size: clamp(2rem, 3.4vw, 2.8rem);
 }
 
-.product-description {
+.product-description-panel {
   max-width: 46ch;
-  color: rgba(21, 20, 15, 0.78);
   margin-bottom: var(--space-3);
+}
+
+.product-description-panel summary {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(21, 20, 15, 0.6);
+  cursor: pointer;
+  margin-bottom: var(--space-1);
+}
+
+.product-description {
+  color: rgba(21, 20, 15, 0.78);
+  margin-top: var(--space-1);
+}
+
+.color-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: var(--space-1) 0 var(--space-3);
+}
+
+.color-option {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--swatch-color, var(--bone));
+  border: 1px solid var(--line);
+  cursor: pointer;
+  display: block;
+  position: relative;
+}
+
+.color-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.color-option:has(input:checked) {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.qty-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  margin: var(--space-1) 0 var(--space-2);
+  width: fit-content;
+}
+
+.qty-btn {
+  width: 2.4rem;
+  border: none;
+  background: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.qty-input {
+  width: 3rem;
+  border: none;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  text-align: center;
+  font: inherit;
+}
+
+.stock-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  margin-bottom: var(--space-2);
+}
+
+.stock-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--forest);
+}
+
+.stock-status.out-of-stock .stock-dot {
+  background: var(--oxblood);
 }
 
 .size-row {
