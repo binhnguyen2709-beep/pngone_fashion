@@ -709,6 +709,7 @@ h3 {
 .product-description {
   color: rgba(21, 20, 15, 0.78);
   margin-top: var(--space-1);
+  white-space: pre-line;
 }
 
 .color-row {

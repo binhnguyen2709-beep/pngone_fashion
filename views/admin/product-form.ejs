@@ -28,11 +28,11 @@
 
     <div class="form-row">
       <label class="field-label">Mô tả (Tiếng Việt)</label>
-      <textarea name="descriptionVi"><%= product ? product.description.vi : '' %></textarea>
+      <textarea name="descriptionVi" style="min-height: 220px;" placeholder="Đoạn giới thiệu ngắn về sản phẩm.&#10;&#10;ĐẶC ĐIỂM NỔI BẬT:&#10;- Chất liệu: ...&#10;- Kiểu dáng: ...&#10;- Đường may: ...&#10;&#10;Lý do nên chọn sản phẩm này..."><%= product ? product.description.vi : '' %></textarea>
     </div>
     <div class="form-row">
       <label class="field-label">Mô tả (Tiếng Anh)</label>
-      <textarea name="descriptionEn"><%= product ? product.description.en : '' %></textarea>
+      <textarea name="descriptionEn" style="min-height: 220px;" placeholder="A short intro paragraph.&#10;&#10;KEY FEATURES:&#10;- Fabric: ...&#10;- Fit: ...&#10;- Stitching: ...&#10;&#10;Why choose this piece..."><%= product ? product.description.en : '' %></textarea>
     </div>
 
     <div class="form-row">
