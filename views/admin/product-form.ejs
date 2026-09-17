@@ -28,11 +28,13 @@
 
     <div class="form-row">
       <label class="field-label">Mô tả (Tiếng Việt)</label>
-      <textarea name="descriptionVi" style="min-height: 220px;" placeholder="Đoạn giới thiệu ngắn về sản phẩm.&#10;&#10;ĐẶC ĐIỂM NỔI BẬT:&#10;- Chất liệu: ...&#10;- Kiểu dáng: ...&#10;- Đường may: ...&#10;&#10;Lý do nên chọn sản phẩm này..."><%= product ? product.description.vi : '' %></textarea>
+      <p style="font-size: 0.78rem; color: rgba(21,20,15,0.55); margin: 0 0 0.4rem;">Chèn ảnh giữa mô tả bằng cách gõ một dòng riêng: <code>[img: link-ảnh]</code></p>
+      <textarea name="descriptionVi" style="min-height: 220px;" placeholder="Đoạn giới thiệu ngắn về sản phẩm.&#10;&#10;ĐẶC ĐIỂM NỔI BẬT:&#10;- Chất liệu: ...&#10;- Kiểu dáng: ...&#10;- Đường may: ...&#10;&#10;[img: /images/products/ao-polo-chi-tiet.jpg]&#10;&#10;Lý do nên chọn sản phẩm này..."><%= product ? product.description.vi : '' %></textarea>
     </div>
     <div class="form-row">
       <label class="field-label">Mô tả (Tiếng Anh)</label>
-      <textarea name="descriptionEn" style="min-height: 220px;" placeholder="A short intro paragraph.&#10;&#10;KEY FEATURES:&#10;- Fabric: ...&#10;- Fit: ...&#10;- Stitching: ...&#10;&#10;Why choose this piece..."><%= product ? product.description.en : '' %></textarea>
+      <p style="font-size: 0.78rem; color: rgba(21,20,15,0.55); margin: 0 0 0.4rem;">Insert an image mid-description with its own line: <code>[img: image-url]</code></p>
+      <textarea name="descriptionEn" style="min-height: 220px;" placeholder="A short intro paragraph.&#10;&#10;KEY FEATURES:&#10;- Fabric: ...&#10;- Fit: ...&#10;- Stitching: ...&#10;&#10;[img: /images/products/polo-detail.jpg]&#10;&#10;Why choose this piece..."><%= product ? product.description.en : '' %></textarea>
     </div>
 
     <div class="form-row">

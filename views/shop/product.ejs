@@ -33,7 +33,7 @@
 
         <details class="product-description-panel" open>
           <summary><%= t('product.description') %></summary>
-          <p class="product-description"><%= field(product.description) %></p>
+          <div class="product-description"><%- renderDescription(field(product.description)) %></div>
         </details>
 
         <form action="/cart/add" method="POST">
